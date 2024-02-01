@@ -17,7 +17,7 @@ export default function App() {
     <Provider store={store}>
       <SafeAreaProvider>
         <NavigationContainer>
-          <Root isLoggedIn={true} />
+          <Root isLoggedIn={false} />
         </NavigationContainer>
         <StatusBar barStyle="dark-content" />
       </SafeAreaProvider>

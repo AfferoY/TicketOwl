@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { emailLogin } from "../../utils/auth/emailLogin";
 
 interface IInitialAuthState {
   auth: {
@@ -9,7 +10,7 @@ interface IInitialAuthState {
   };
   isLoggedIn: boolean;
   loading: boolean;
-  error: string | null;
+  error: string | null; // Explicitly type the error property
 }
 
 const initialAuthState: IInitialAuthState = {
@@ -27,23 +28,31 @@ const initialAuthState: IInitialAuthState = {
 const authSlice = createSlice({
   name: "auth",
   initialState: initialAuthState,
-  reducers: {},
+  reducers: {
+    setLoggedIn: (state, action) => {
+      state.isLoggedIn = action.payload;
+      console.log("로그인 성공");
+    },
+  },
   extraReducers: (builder) => {
-    // builder.addCase(login.pending, (state, action) => {
-    //     state.loading = true;
-    //     state.error = null;
+    // builder.addCase(emailLogin.pending, (state, action) => {
+    //   state.loading = true;
+    //   state.error = null;
+    //   console.log("로그인중");
     // });
-    // builder.addCase(login.fulfilled, (state, action) => {
-    //     state.loading = false;
-    //     state.isLoggedIn = true;
-    //     state.auth = action.payload;
+    // builder.addCase(emailLogin.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.isLoggedIn = true;
+    //   console.log("로그인 성공");
+    //   // state.auth = action.payload;
     // });
-    // builder.addCase(login.rejected, (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.error.message;
+    // builder.addCase(emailLogin.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.error = action.payload as string;
+    //   console.log("로그인 실패");
     // });
   },
 });
 
-// export const {} = authSlice.actions;
+export const { setLoggedIn } = authSlice.actions;
 export const authReducer = authSlice.reducer;

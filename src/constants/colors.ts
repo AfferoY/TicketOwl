@@ -22,6 +22,8 @@ export const palette = {
   melon: "#04E532",
   yes24: "#0080FF",
   ticketRed: "#F71F38",
+  kakao: "#FEE500",
+  google: "#4285F4",
 
   backdrop: "rgba(185, 185, 185, 0.57)",
 } as const;
