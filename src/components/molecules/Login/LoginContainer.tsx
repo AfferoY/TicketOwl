@@ -11,8 +11,8 @@ const Container = styled.View<{ background?: string }>`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${({ background, theme }) =>
-    background ? background : theme.loginBackground};
+  background-color: ${({ background }) =>
+    background ? background : lightTheme.background};
 `;
 const Logo = styled.View`
   padding: ${responsiveSize(90)}px ${spacing.gutter}px ${responsiveSize(20)}px;
@@ -38,7 +38,6 @@ const LoginContainer = ({
 }) => {
   return (
     <Container background={background}>
-      <PageHeader title="" headerLeftShown={false} separator={false} />
       <Logo>
         <Image
           source={require("../../../../assets/images/logo.png")}

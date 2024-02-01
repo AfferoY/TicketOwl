@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components/native";
-import { palette } from "../../../constants/colors";
+import { lightTheme, palette } from "../../../constants/colors";
 import responsiveSize from "../../../utils/responsiveSize";
 import { IconsPic } from "../../atoms/Icons";
 import Text from "../../atoms/Text";
 
 const ButtonStyle = styled.TouchableOpacity<{ color?: string; type?: string }>`
-  background-color: ${(props) => (props.color ? props.color : props.theme.box)};
+  background-color: ${(props) =>
+    props.color ? props.color : lightTheme.background};
   border: 1px solid
     ${(props) =>
-      props.type !== "email" ? "transparent" : props.theme.emailLoginBtn};
+      props.type !== "email" ? "transparent" : lightTheme.pointPink};
 
   border-radius: ${responsiveSize(12)}px;
   width: 100%;
@@ -24,7 +25,7 @@ const TextContainer = styled.View`
   gap: ${responsiveSize(8)}px;
 `;
 
-const IconsAsset = {
+const IconsAsset: { [key: string]: any } = {
   kakao: require("../../../../assets/icons/kakao-black.png"),
   apple: require("../../../../assets/icons/apple-white.png"),
 };
