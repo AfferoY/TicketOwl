@@ -1,16 +1,11 @@
-export const spacing = {
-  xxxs: 2,
-  xxs: 4,
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 20,
-  xl: 24,
-  xxl: 32,
-  xxxl: 40,
+import responsiveSize from "../utils/responsiveSize";
 
-  gutter: 20,
-  offset: 12,
+export const spacing = {
+  gutter: responsiveSize(20),
+  offset: responsiveSize(24),
+  padding: responsiveSize(10),
+
+  iconBox: responsiveSize(35),
 } as const;
 
 export type Spacing = keyof typeof spacing;

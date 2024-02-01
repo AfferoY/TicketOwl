@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
+import Icons from "../components/atoms/Icons";
 import { lightTheme } from "../constants/colors";
-import ScheduleMainScreen from "../screens/Schedule/ScheduleMainScreen";
 import useHeight from "../hooks/useHeight";
 import CalendarMainScreen from "../screens/Calendar/CalendarMainScreen";
 import ConcertMainScreen from "../screens/Concert/ConcertMainScreen";
 import MyPageMainScreen from "../screens/MyPage/MyPageMainScreen";
-import Icons from "../components/atoms/Icons";
+import ScheduleStack from "./ScheduleStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -110,8 +110,8 @@ const MainTab = () => {
       }}
     >
       <Tab.Screen
-        name="ScheduleMain"
-        component={ScheduleMainScreen}
+        name="ScheduleStack"
+        component={ScheduleStack}
         options={ScheduleOptions}
       />
       <Tab.Screen
