@@ -7,6 +7,7 @@ export const spacing = {
   small: responsiveSize(4),
 
   iconBox: responsiveSize(35),
+  lineHeight: responsiveSize(20),
 } as const;
 
 export type Spacing = keyof typeof spacing;

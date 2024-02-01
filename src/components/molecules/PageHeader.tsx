@@ -29,10 +29,12 @@ const PageHeader = ({
   headerLeftShown = true,
   headerRight,
   title,
+  separator = true,
 }: {
   headerLeftShown?: boolean;
   headerRight?: React.ReactNode;
   title?: string;
+  separator?: boolean;
 }) => {
   const { NOTCH_TOP } = useHeight();
   const navigation = useNavigation();
@@ -62,13 +64,15 @@ const PageHeader = ({
 
         {headerRight ? headerRight : <Blank />}
       </Container>
-      <View
-        style={{
-          height: 0.3,
-          width: "100%",
-          backgroundColor: lightTheme.separator,
-        }}
-      />
+      {separator && (
+        <View
+          style={{
+            height: 0.3,
+            width: "100%",
+            backgroundColor: lightTheme.separator,
+          }}
+        />
+      )}
     </>
   );
 };
