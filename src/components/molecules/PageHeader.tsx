@@ -1,14 +1,12 @@
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
+import { View } from "react-native";
 import styled from "styled-components/native";
 import { lightTheme } from "../../constants/colors";
 import { spacing } from "../../constants/spacing";
 import useHeight from "../../hooks/useHeight";
-
 import Icons from "../atoms/Icons";
 import Text from "../atoms/Text";
-import responsiveSize from "../../utils/responsiveSize";
-import { View } from "react-native";
 
 const Container = styled.View<{ notchTop: number }>`
   padding: ${(props) => props.notchTop + spacing.padding}px ${spacing.offset}px
@@ -42,7 +40,7 @@ const PageHeader = ({
     <Icons
       type="feather"
       name="chevron-left"
-      size={35}
+      size={spacing.iconBox}
       color={lightTheme.text}
       onPress={() => {
         navigation.goBack();

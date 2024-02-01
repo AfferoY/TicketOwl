@@ -5,6 +5,8 @@ import Root from "./src/navigators/Root";
 import SplashScreen from "./src/screens/SplashScreen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
+import { Provider } from "react-redux";
+import store from "./src/store/configuretore";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts(customFontsToLoad);
@@ -12,11 +14,13 @@ export default function App() {
   if (!fontsLoaded) return <SplashScreen />;
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Root isLoggedIn={true} />
-      </NavigationContainer>
-      <StatusBar barStyle="dark-content" />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Root isLoggedIn={true} />
+        </NavigationContainer>
+        <StatusBar barStyle="dark-content" />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
