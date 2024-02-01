@@ -1,8 +1,8 @@
 import React from "react";
 import { TextStyle } from "react-native";
 import styled from "styled-components/native";
+import { lightTheme } from "../../constants/colors";
 import responsiveSize from "../../utils/responsiveSize";
-import { lightTheme, palette } from "../../constants/colors";
 
 export type SizeStyles = "xl" | "lg" | "md" | "sm" | "xs" | "xxs";
 export type WeightStyles =
@@ -39,7 +39,6 @@ const TextStyling = styled.Text<{
   font-size: ${({ size }) => $sizeStyles[size].fontSize}px;
   font-family: ${({ weight }) => $weightStyles[weight].fontFamily};
   color: ${(props) => (props.color === "#000" ? lightTheme.text : props.color)};
-  font-weight: 400;
 `;
 
 interface TextProps {
