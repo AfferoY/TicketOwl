@@ -1,12 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
-import MainScreenHeader from "../../components/organisms/Schedule/MainScreenHeader";
-import { useAppSelect } from "../../store/configureStore.hooks";
+import { View } from "react-native";
+import ScheduleHeader from "../../components/organisms/Schedule/ScheduleHeader";
 
 const ScheduleMainScreen = () => {
   return (
     <View>
-      <MainScreenHeader />
+      <ScheduleHeader title="11월 11일 토요일" />
     </View>
   );
 };

@@ -54,7 +54,7 @@ const PageHeader = ({
         {headerLeftShown ? <HeaderLeft /> : <Blank />}
         {title && (
           <Title>
-            <Text size="lg" weight="bold">
+            <Text size="xl" weight="bold">
               {title}
             </Text>
           </Title>
