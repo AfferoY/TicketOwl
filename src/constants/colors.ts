@@ -35,6 +35,7 @@ export const lightTheme = {
   background: palette.gray100,
   backdrop: palette.backdrop,
   border: palette.gray800,
+  separator: palette.gray500,
 
   text: palette.gray900,
   textDim: palette.gray700,

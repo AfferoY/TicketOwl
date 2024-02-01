@@ -1,9 +1,10 @@
+import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import Text from "./src/components/atoms/Text";
 import { customFontsToLoad } from "./src/constants/typography";
+import Root from "./src/navigators/Root";
 import SplashScreen from "./src/screens/SplashScreen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "react-native";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts(customFontsToLoad);
@@ -11,18 +12,11 @@ export default function App() {
   if (!fontsLoaded) return <SplashScreen />;
 
   return (
-    <View style={styles.container}>
-      <Text size="lg">Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Root isLoggedIn={true} />
+      </NavigationContainer>
+      <StatusBar barStyle="dark-content" />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
