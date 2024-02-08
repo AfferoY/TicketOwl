@@ -17,7 +17,7 @@ const $sizeStyles = {
   xl: { fontSize: responsiveSize(20) },
   lg: { fontSize: responsiveSize(18) },
   md: { fontSize: responsiveSize(16) },
-  sm: { fontSize: responsiveSize(12) },
+  sm: { fontSize: responsiveSize(14) },
   xs: { fontSize: responsiveSize(10) },
   xxs: { fontSize: responsiveSize(9) },
 };
