@@ -43,7 +43,15 @@ const WelcomeScreen = ({ navigation }: { navigation: any }) => {
           />
         </Container>
 
-        <Policy serviceOnPress={() => {}} privacyOnPress={() => {}} />
+        <Policy
+          serviceOnPress={() => {
+            navigation.navigate("MainTab", {
+              screen: "ScheduleStack",
+              params: "ScheduleMain",
+            });
+          }}
+          privacyOnPress={() => {}}
+        />
       </LoginContainer>
     </>
   );

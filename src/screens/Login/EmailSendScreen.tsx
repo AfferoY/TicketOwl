@@ -4,6 +4,7 @@ import TextInput from "../../components/atoms/TextInput";
 import LoginContainer from "../../components/molecules/Login/LoginContainer";
 import PageHeader from "../../components/molecules/PageHeader";
 import { spacing } from "../../constants/spacing";
+import { client } from "../../utils/api";
 
 const EmailSendScreen = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
@@ -13,28 +14,28 @@ const EmailSendScreen = ({ navigation }: { navigation: any }) => {
   const sendMail = async () => {
     setReady(false);
     // send email
-    // try {
-    //   const responseData = await client.post("account/sendMail", {
-    //     email: email,
-    //   });
+    try {
+      const res = await client.post("account/sendMail", {
+        email: email,
+      });
+      console.log(res);
+      const { result, codeId } = res;
 
-    //   if (responseData.result === "success") {
-    //     navigation.navigate("EmailCheckCode", {
-    //       email,
-    //       codeId: responseData.codeId,
-    //       type: "register",
-    //     });
-    //   } else if (responseData.result === "fail") {
-    //     setEmailAlert("이미 가입된 이메일입니다.");
-    //   } else {
-    //     setEmailAlert("이메일 전송에 실패했습니다.");
-    //   }
-
-    //   console.log(responseData); // {"codeId": 71, "result": "success"}
-    // } catch (error) {
-    //   console.error("[client] 이메일 전송 오류 발생:", error);
-    //   setEmailAlert("이메일 전송 중 오류가 발생했습니다.");
-    // }
+      if (result === "success") {
+        navigation.navigate("EmailCheckCode", {
+          email,
+          codeId,
+          type: "register",
+        });
+      } else if (result === "fail") {
+        setEmailAlert("이미 가입된 이메일입니다.");
+      } else {
+        setEmailAlert("이메일 전송에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("[client] 이메일 전송 오류 발생:", error);
+      setEmailAlert("이메일 전송 중 오류가 발생했습니다.");
+    }
     setReady(true);
   };
 
