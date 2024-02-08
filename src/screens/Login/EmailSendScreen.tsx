@@ -5,8 +5,12 @@ import LoginContainer from "../../components/molecules/Login/LoginContainer";
 import PageHeader from "../../components/molecules/PageHeader";
 import { spacing } from "../../constants/spacing";
 import { client } from "../../utils/api";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { LoginStackParamList } from "../../navigators/LoginStack";
 
-const EmailSendScreen = ({ navigation }: { navigation: any }) => {
+const EmailSendScreen = ({
+  navigation,
+}: NativeStackScreenProps<LoginStackParamList>) => {
   const [email, setEmail] = useState("");
   const [emailAlert, setEmailAlert] = useState("");
   const [ready, setReady] = useState(false);
@@ -60,6 +64,7 @@ const EmailSendScreen = ({ navigation }: { navigation: any }) => {
           onPress={() => {
             navigation.navigate("EmailCheckCode", {
               email,
+              codeId,
               type: "register",
             });
           }}

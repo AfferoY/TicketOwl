@@ -10,20 +10,24 @@ import { useAppDispatch, useAppSelect } from "../../store/configureStore.hooks";
 import { setLoggedIn } from "../../store/modules/auth";
 import { client } from "../../utils/api";
 import getDeviceId from "../../utils/getDeviceId";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { LoginStackParamList } from "../../navigators/LoginStack";
 
-export interface IRegisterUser {
+type EmailRegisterScreenProps = NativeStackScreenProps<
+  LoginStackParamList,
+  "EmailRegister"
+>;
+
+interface IRegisterUser {
   email: string;
   id: string;
   password: string;
 }
 
 const EmailRegisterScreen = ({
-  route,
   navigation,
-}: {
-  route: any;
-  navigation: any;
-}) => {
+  route,
+}: EmailRegisterScreenProps) => {
   const dispatch = useAppDispatch();
   const email = route.params.email;
   const [user, setUser] = useState<IRegisterUser>({

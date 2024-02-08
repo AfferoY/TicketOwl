@@ -13,6 +13,8 @@ import { setLoggedIn } from "../../store/modules/auth";
 import responsiveSize from "../../utils/responsiveSize";
 import { client } from "../../utils/api";
 import getDeviceId from "../../utils/getDeviceId";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { LoginStackParamList } from "../../navigators/LoginStack";
 
 const SubBtn = ({ text, onPress }: { text: string; onPress: () => void }) => {
   return (
@@ -29,7 +31,9 @@ const SubBtn = ({ text, onPress }: { text: string; onPress: () => void }) => {
   );
 };
 
-const EmailLoginScreen = ({ navigation }: { navigation: any }) => {
+const EmailLoginScreen = ({
+  navigation,
+}: NativeStackScreenProps<LoginStackParamList>) => {
   const dispatch = useAppDispatch();
   const [user, setUser] = useState({
     email: "",
