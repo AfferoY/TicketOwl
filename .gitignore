@@ -28,8 +28,12 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
-
 # typescript
 *.tsbuildinfo
+
+# env files
+.env*.local
+
+/android/app/debug.keystore
+**/GoogleService-Info.plist
+**/google-services.json
