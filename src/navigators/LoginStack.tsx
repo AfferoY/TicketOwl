@@ -7,8 +7,11 @@ import WelcomeScreen from "../screens/Login/WelcomeScreen";
 import EmailCheckCodeScreen from "../screens/Login/EmailCheckCodeScreen";
 import EmailRegisterScreen from "../screens/Login/EmailRegisterScreen";
 import FindPwEmailSendScreen from "../screens/Login/FindPwEmailSendScreen";
+import { NavigatorScreenParams } from "@react-navigation/native";
+import { MainTabParamList } from "./MainTab";
 
 export type LoginStackParamList = {
+  MainTab: NavigatorScreenParams<MainTabParamList> | undefined;
   Welcome: undefined;
   EmailLogin: undefined;
   EmailSend: undefined;
