@@ -62,9 +62,10 @@ const EmailSendScreen = ({
         <NextBtn
           text="다음"
           onPress={() => {
+            // 임시로 바로 넘어가게 설정. sendMail()로 변경해야 함.
             navigation.navigate("EmailCheckCode", {
               email,
-              codeId,
+              codeId: 1,
               type: "register",
             });
           }}

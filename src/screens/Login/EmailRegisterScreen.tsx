@@ -39,6 +39,8 @@ const EmailRegisterScreen = ({
   const [idAlert, setIdAlert] = useState("");
   const [pwAlert, setPwAlert] = useState("");
   const [confirmPwAlert, setConfirmPwAlert] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const handleChange = (name: string, value: string) => {
     setUser((prevUser) => ({
       ...prevUser,
@@ -122,6 +124,7 @@ const EmailRegisterScreen = ({
           text="다음"
           onPress={() => {}}
           style={{ marginTop: spacing.gutter }}
+          loading={loading}
         />
       </LoginContainer>
     </>
