@@ -8,7 +8,14 @@ import ConcertMainScreen from "../screens/Concert/ConcertMainScreen";
 import MyPageMainScreen from "../screens/MyPage/MyPageMainScreen";
 import ScheduleStack from "./ScheduleStack";
 
-const Tab = createBottomTabNavigator();
+export type MainTabParamList = {
+  ScheduleStack: undefined;
+  CalendarMain: undefined;
+  ConcertMain: undefined;
+  MyPageMain: undefined;
+};
+
+const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const ScheduleOptions = {
   tabBarLabel: "일정",

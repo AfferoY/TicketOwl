@@ -4,8 +4,13 @@ import TextInput from "../../components/atoms/TextInput";
 import LoginContainer from "../../components/molecules/Login/LoginContainer";
 import PageHeader from "../../components/molecules/PageHeader";
 import { spacing } from "../../constants/spacing";
+import { client } from "../../utils/api";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { LoginStackParamList } from "../../navigators/LoginStack";
 
-const EmailSendScreen = ({ navigation }: { navigation: any }) => {
+const EmailSendScreen = ({
+  navigation,
+}: NativeStackScreenProps<LoginStackParamList>) => {
   const [email, setEmail] = useState("");
   const [emailAlert, setEmailAlert] = useState("");
   const [ready, setReady] = useState(false);
@@ -13,28 +18,28 @@ const EmailSendScreen = ({ navigation }: { navigation: any }) => {
   const sendMail = async () => {
     setReady(false);
     // send email
-    // try {
-    //   const responseData = await client.post("account/sendMail", {
-    //     email: email,
-    //   });
+    try {
+      const res = await client.post("account/sendMail", {
+        email: email,
+      });
+      console.log(res);
+      const { result, codeId } = res;
 
-    //   if (responseData.result === "success") {
-    //     navigation.navigate("EmailCheckCode", {
-    //       email,
-    //       codeId: responseData.codeId,
-    //       type: "register",
-    //     });
-    //   } else if (responseData.result === "fail") {
-    //     setEmailAlert("이미 가입된 이메일입니다.");
-    //   } else {
-    //     setEmailAlert("이메일 전송에 실패했습니다.");
-    //   }
-
-    //   console.log(responseData); // {"codeId": 71, "result": "success"}
-    // } catch (error) {
-    //   console.error("[client] 이메일 전송 오류 발생:", error);
-    //   setEmailAlert("이메일 전송 중 오류가 발생했습니다.");
-    // }
+      if (result === "success") {
+        navigation.navigate("EmailCheckCode", {
+          email,
+          codeId,
+          type: "register",
+        });
+      } else if (result === "fail") {
+        setEmailAlert("이미 가입된 이메일입니다.");
+      } else {
+        setEmailAlert("이메일 전송에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("[client] 이메일 전송 오류 발생:", error);
+      setEmailAlert("이메일 전송 중 오류가 발생했습니다.");
+    }
     setReady(true);
   };
 
@@ -57,8 +62,10 @@ const EmailSendScreen = ({ navigation }: { navigation: any }) => {
         <NextBtn
           text="다음"
           onPress={() => {
+            // 임시로 바로 넘어가게 설정. sendMail()로 변경해야 함.
             navigation.navigate("EmailCheckCode", {
               email,
+              codeId: 1,
               type: "register",
             });
           }}

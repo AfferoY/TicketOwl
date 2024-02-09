@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { emailLogin } from "../../utils/auth/emailLogin";
+import { storeData } from "../../utils/asyncStorage";
 
 interface IInitialAuthState {
   auth: {
@@ -7,10 +7,11 @@ interface IInitialAuthState {
     accessExp: number;
     refreshExp: number;
     deviceId: string;
+    strategy: string;
   };
   isLoggedIn: boolean;
   loading: boolean;
-  error: string | null; // Explicitly type the error property
+  error: string | null;
 }
 
 const initialAuthState: IInitialAuthState = {
@@ -19,6 +20,7 @@ const initialAuthState: IInitialAuthState = {
     accessExp: 0,
     refreshExp: 0,
     deviceId: "",
+    strategy: "",
   },
   isLoggedIn: false,
   loading: false,
@@ -30,28 +32,24 @@ const authSlice = createSlice({
   initialState: initialAuthState,
   reducers: {
     setLoggedIn: (state, action) => {
-      state.isLoggedIn = action.payload;
+      const { accessToken, refreshToken, accessExp, refreshExp, deviceId } =
+        action.payload;
+      state.auth.accessToken = accessToken;
+      state.auth.accessExp = accessExp;
+      state.auth.refreshExp = refreshExp;
+      state.auth.deviceId = deviceId;
+
+      storeData("accessToken", accessToken);
+      storeData("refreshToken", refreshToken);
+      storeData("accessExp", accessExp);
+      storeData("refreshExp", refreshExp);
+      storeData("deviceId", deviceId);
+
+      state.isLoggedIn = true;
       console.log("로그인 성공");
     },
   },
-  extraReducers: (builder) => {
-    // builder.addCase(emailLogin.pending, (state, action) => {
-    //   state.loading = true;
-    //   state.error = null;
-    //   console.log("로그인중");
-    // });
-    // builder.addCase(emailLogin.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.isLoggedIn = true;
-    //   console.log("로그인 성공");
-    //   // state.auth = action.payload;
-    // });
-    // builder.addCase(emailLogin.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action.payload as string;
-    //   console.log("로그인 실패");
-    // });
-  },
+  extraReducers: (builder) => {},
 });
 
 export const { setLoggedIn } = authSlice.actions;

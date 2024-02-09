@@ -11,6 +11,10 @@ import { spacing } from "../../constants/spacing";
 import { useAppDispatch, useAppSelect } from "../../store/configureStore.hooks";
 import { setLoggedIn } from "../../store/modules/auth";
 import responsiveSize from "../../utils/responsiveSize";
+import { client } from "../../utils/api";
+import getDeviceId from "../../utils/getDeviceId";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { LoginStackParamList } from "../../navigators/LoginStack";
 
 const SubBtn = ({ text, onPress }: { text: string; onPress: () => void }) => {
   return (
@@ -27,7 +31,10 @@ const SubBtn = ({ text, onPress }: { text: string; onPress: () => void }) => {
   );
 };
 
-const EmailLoginScreen = ({ navigation }: { navigation: any }) => {
+const EmailLoginScreen = ({
+  navigation,
+}: NativeStackScreenProps<LoginStackParamList>) => {
+  const dispatch = useAppDispatch();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -41,11 +48,40 @@ const EmailLoginScreen = ({ navigation }: { navigation: any }) => {
     }));
     setAlert("");
   };
-  const dispatch = useAppDispatch();
-  const { isLoggedIn } = useAppSelect((state) => state.auth);
-  const handleLogin = () => {
-    dispatch(setLoggedIn(true));
+
+  const handleLogin = async () => {
+    const deviceId = await getDeviceId();
+    try {
+      const res = await client.post("", {
+        email: user.email,
+        password: user.password,
+        deviceId: deviceId,
+      });
+      const {
+        result,
+        message,
+        accessToken,
+        refreshToken,
+        accessExp,
+        refreshExp,
+      } = res;
+      if (result === "success") {
+        dispatch(
+          setLoggedIn({
+            accessToken,
+            refreshToken,
+            accessExp,
+            refreshExp,
+            deviceId,
+          })
+        );
+      }
+    } catch (e: any) {
+      console.log("emailLogin error: ", e.message);
+    }
   };
+
+  const { isLoggedIn } = useAppSelect((state) => state.auth);
   useEffect(() => {
     if (isLoggedIn) {
       navigation.navigate("MainTab", {
@@ -84,7 +120,7 @@ const EmailLoginScreen = ({ navigation }: { navigation: any }) => {
         )}
         <NextBtn
           text="로그인"
-          onPress={handleLogin}
+          onPress={() => handleLogin()}
           style={{ marginTop: spacing.gutter }}
         />
         <FlexBox justifyContent="center" styles={{ marginTop: spacing.gutter }}>

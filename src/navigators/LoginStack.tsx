@@ -8,7 +8,16 @@ import EmailCheckCodeScreen from "../screens/Login/EmailCheckCodeScreen";
 import EmailRegisterScreen from "../screens/Login/EmailRegisterScreen";
 import FindPwEmailSendScreen from "../screens/Login/FindPwEmailSendScreen";
 
-const Stack = createNativeStackNavigator();
+export type LoginStackParamList = {
+  Welcome: undefined;
+  EmailLogin: undefined;
+  EmailSend: undefined;
+  EmailCheckCode: { email: string; codeId: Number; type: string };
+  EmailRegister: { email: string };
+  FindPwEmailSend: undefined;
+};
+
+const Stack = createNativeStackNavigator<LoginStackParamList>();
 
 const LoginStack = () => {
   return (
