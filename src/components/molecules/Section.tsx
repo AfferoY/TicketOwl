@@ -12,15 +12,18 @@ const Section = ({
   children,
   title,
   noPaddingVertical = false,
+  noPaddingHorizontal = false,
 }: {
   children: ReactNode;
   title: string;
   noPaddingVertical?: boolean;
+  noPaddingHorizontal?: boolean;
 }) => {
   return (
     <View
       style={{
         paddingVertical: spacing.offset,
+        paddingBottom: noPaddingVertical ? 0 : spacing.offset,
       }}
     >
       <SectionContainer
@@ -30,7 +33,11 @@ const Section = ({
           {title}
         </Text>
       </SectionContainer>
-      {children}
+      <View
+        style={{ paddingHorizontal: noPaddingHorizontal ? 0 : spacing.offset }}
+      >
+        {children}
+      </View>
     </View>
   );
 };

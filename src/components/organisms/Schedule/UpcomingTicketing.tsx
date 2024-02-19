@@ -8,7 +8,11 @@ import { spacing } from "../../../constants/spacing";
 
 const UpcomingTicketing = () => {
   return (
-    <Section title="다가오는 티켓팅" noPaddingVertical={true}>
+    <Section
+      title="다가오는 티켓팅"
+      noPaddingVertical={true}
+      noPaddingHorizontal={true}
+    >
       {DATA_UPCOMING.length === 0 ? (
         <View style={{ paddingTop: spacing.offset }}>
           <NoData text="다가오는 일정이 없네요 :)" />

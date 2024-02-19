@@ -13,6 +13,7 @@ export const palette = {
   pink200: "#FBD8DE",
   pink300: "#F4B4D0",
   pink400: "#ED8093",
+  pink500: "#E73252",
 
   brown100: "#958185",
   brown200: "#2A030A",
@@ -45,6 +46,7 @@ export const lightTheme = {
 
   pointPink: palette.pink400,
   subPink: palette.pink200,
+  red: palette.pink500,
 
   inactiveTint: palette.gray600,
 };

@@ -7,6 +7,8 @@ import { customFontsToLoad } from "./src/constants/typography";
 import Root from "./src/navigators/Root";
 import SplashScreen from "./src/screens/SplashScreen";
 import store from "./src/store/configuretore";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "./src/config/toast";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts(customFontsToLoad);
@@ -20,6 +22,7 @@ export default function App() {
           <Root isLoggedIn={false} />
         </NavigationContainer>
         <StatusBar barStyle="dark-content" />
+        <Toast config={toastConfig} />
       </SafeAreaProvider>
     </Provider>
   );
