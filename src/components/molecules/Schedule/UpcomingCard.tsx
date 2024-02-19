@@ -8,6 +8,7 @@ import FlexBox from "../../atoms/FlexBox";
 import Icons from "../../atoms/Icons";
 import Text from "../../atoms/Text";
 import responsiveSize from "../../../utils/responsiveSize";
+import ColorBadge from "../../atoms/ColorBadge";
 
 const Container = styled.View`
   padding: ${responsiveSize(14)}px;
@@ -45,13 +46,20 @@ const UpcomingCard = ({
           alignItems="flex-end"
           styles={{ paddingTop: spacing.small, paddingBottom: 16 }}
         >
-          <Text size="lg">11:00</Text>
-          <Text size="sm">AM</Text>
+          <Text size="lg" weight="bold">
+            11:00
+          </Text>
+          <Text size="sm" weight="bold">
+            AM
+          </Text>
         </FlexBox>
 
-        <Text size="sm" styles={{ paddingBottom: 2 }}>
-          {data.title}
-        </Text>
+        <FlexBox alignItems="center" gap={spacing.small}>
+          <ColorBadge />
+          <Text size="sm" styles={{ paddingBottom: 2 }}>
+            {data.title}
+          </Text>
+        </FlexBox>
         <Text size="xs" color={lightTheme.textDim}>
           {" "}
           {data.ticketing_site.join(" | ")}

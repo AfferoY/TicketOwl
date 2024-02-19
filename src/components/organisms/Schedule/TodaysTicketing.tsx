@@ -12,7 +12,9 @@ const TodaysTicketing = () => {
     <Section title="오늘의 티켓팅" noPaddingVertical>
       <Margin margin={spacing.offset} />
       {DATA_TODAY.length === 0 ? (
-        <NoData text="오늘은 일정이 없네요:)" />
+        <View style={{ paddingBottom: spacing.offset }}>
+          <NoData text="오늘은 일정이 없네요:)" />
+        </View>
       ) : (
         DATA_TODAY.map((data) => (
           <TodaysCard1 key={data.id} onPress={() => {}} data={data} />
