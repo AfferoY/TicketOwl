@@ -6,6 +6,7 @@ export const spacing = {
   padding: responsiveSize(10),
   small: responsiveSize(4),
 
+  borderRadius: responsiveSize(20),
   iconBox: responsiveSize(35),
   lineHeight: responsiveSize(20),
 } as const;

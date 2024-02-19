@@ -14,12 +14,12 @@ export type WeightStyles =
   | "heavy";
 
 const $sizeStyles = {
-  xl: { fontSize: responsiveSize(20) },
-  lg: { fontSize: responsiveSize(18) },
-  md: { fontSize: responsiveSize(16) },
-  sm: { fontSize: responsiveSize(14) },
-  xs: { fontSize: responsiveSize(10) },
-  xxs: { fontSize: responsiveSize(9) },
+  xl: { fontSize: responsiveSize(22) },
+  lg: { fontSize: responsiveSize(20) },
+  md: { fontSize: responsiveSize(18) },
+  sm: { fontSize: responsiveSize(16) },
+  xs: { fontSize: responsiveSize(12) },
+  xxs: { fontSize: responsiveSize(10) },
 };
 
 const $weightStyles = {

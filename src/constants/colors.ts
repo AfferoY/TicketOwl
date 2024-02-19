@@ -26,6 +26,7 @@ export const palette = {
   google: "#4285F4",
 
   backdrop: "rgba(185, 185, 185, 0.57)",
+  shadow: "rgba(0, 0, 0, 0.15)",
 } as const;
 
 // 확장성을 위해 theme을 객체로 만들어서 사용. 나중에 darkTheme 추가 가능

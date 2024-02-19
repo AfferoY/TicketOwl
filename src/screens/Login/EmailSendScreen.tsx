@@ -18,20 +18,24 @@ const EmailSendScreen = ({
   const sendMail = async () => {
     setReady(false);
     // send email
+
     try {
-      const res = await client.post("account/sendMail", {
+      const res = await client.post("/api/members/signup-code", {
         email: email,
       });
-      console.log(res);
-      const { result, codeId } = res;
 
-      if (result === "success") {
-        navigation.navigate("EmailCheckCode", {
-          email,
-          codeId,
-          type: "register",
-        });
-      } else if (result === "fail") {
+      // status code 출력
+
+      const { success, code, result } = res;
+
+      if (success) {
+        console.log(res);
+        // navigation.navigate("EmailCheckCode", {
+        //   email,
+        //   code,
+        //   type: "register",
+        // });
+      } else if (!success) {
         setEmailAlert("이미 가입된 이메일입니다.");
       } else {
         setEmailAlert("이메일 전송에 실패했습니다.");
@@ -63,11 +67,12 @@ const EmailSendScreen = ({
           text="다음"
           onPress={() => {
             // 임시로 바로 넘어가게 설정. sendMail()로 변경해야 함.
-            navigation.navigate("EmailCheckCode", {
-              email,
-              codeId: 1,
-              type: "register",
-            });
+            sendMail();
+            // navigation.navigate("EmailCheckCode", {
+            //   email,
+            //   code: 1,
+            //   type: "register",
+            // });
           }}
           style={{ marginTop: spacing.gutter }}
           loading={!ready}

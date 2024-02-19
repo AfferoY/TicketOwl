@@ -23,7 +23,7 @@ const Policy = ({
   return (
     <Container>
       <FlexBox>
-        <Text size="sm" color={lightTheme.textDim}>
+        <Text size="xs" color={lightTheme.textDim}>
           계속 진행하면 TicketOwl의
         </Text>
         <TouchableOpacity
@@ -33,12 +33,12 @@ const Policy = ({
             borderColor: lightTheme.text,
           }}
         >
-          <Text size="sm" color={lightTheme.text}>
+          <Text size="xs" color={lightTheme.text}>
             {" "}
             서비스 약관{" "}
           </Text>
         </TouchableOpacity>
-        <Text size="sm" color={lightTheme.textDim}>
+        <Text size="xs" color={lightTheme.textDim}>
           및{" "}
         </Text>
         <TouchableOpacity
@@ -48,15 +48,15 @@ const Policy = ({
             borderColor: lightTheme.text,
           }}
         >
-          <Text size="sm" color={lightTheme.text}>
+          <Text size="xs" color={lightTheme.text}>
             개인정보 보호정책
           </Text>
         </TouchableOpacity>
-        <Text size="sm" color={lightTheme.textDim}>
+        <Text size="xs" color={lightTheme.textDim}>
           에
         </Text>
       </FlexBox>
-      <Text size="sm" color={lightTheme.textDim}>
+      <Text size="xs" color={lightTheme.textDim}>
         동의한 것으로 간주합니다.
       </Text>
     </Container>

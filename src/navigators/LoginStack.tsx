@@ -15,7 +15,7 @@ export type LoginStackParamList = {
   Welcome: undefined;
   EmailLogin: undefined;
   EmailSend: undefined;
-  EmailCheckCode: { email: string; codeId: Number; type: string };
+  EmailCheckCode: { email: string; code: Number; type: string };
   EmailRegister: { email: string };
   FindPwEmailSend: undefined;
 };
