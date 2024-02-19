@@ -13,6 +13,7 @@ export const palette = {
   pink200: "#FBD8DE",
   pink300: "#F4B4D0",
   pink400: "#ED8093",
+  pink500: "#E73252",
 
   brown100: "#958185",
   brown200: "#2A030A",
@@ -26,6 +27,7 @@ export const palette = {
   google: "#4285F4",
 
   backdrop: "rgba(185, 185, 185, 0.57)",
+  shadow: "rgba(0, 0, 0, 0.15)",
 } as const;
 
 // 확장성을 위해 theme을 객체로 만들어서 사용. 나중에 darkTheme 추가 가능
@@ -44,6 +46,7 @@ export const lightTheme = {
 
   pointPink: palette.pink400,
   subPink: palette.pink200,
+  red: palette.pink500,
 
   inactiveTint: palette.gray600,
 };

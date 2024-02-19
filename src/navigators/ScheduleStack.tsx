@@ -4,7 +4,12 @@ import ScheduleMainScreen from "../screens/Schedule/ScheduleMainScreen";
 import NotificationScreen from "../screens/Schedule/NotificationScreen";
 import { lightTheme } from "../constants/colors";
 
-const Stack = createNativeStackNavigator();
+export type ScheduleStackParamList = {
+  ScheduleMain: undefined; 
+  Notification: undefined;
+};
+
+const Stack = createNativeStackNavigator<ScheduleStackParamList>();
 
 const ScheduleStack = () => {
   return (

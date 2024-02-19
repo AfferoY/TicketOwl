@@ -6,10 +6,11 @@ import useHeight from "../hooks/useHeight";
 import CalendarMainScreen from "../screens/Calendar/CalendarMainScreen";
 import ConcertMainScreen from "../screens/Concert/ConcertMainScreen";
 import MyPageMainScreen from "../screens/MyPage/MyPageMainScreen";
-import ScheduleStack from "./ScheduleStack";
+import ScheduleStack, { ScheduleStackParamList } from "./ScheduleStack";
+import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type MainTabParamList = {
-  ScheduleStack: undefined;
+  ScheduleStack: NavigatorScreenParams<ScheduleStackParamList> | undefined;
   CalendarMain: undefined;
   ConcertMain: undefined;
   MyPageMain: undefined;

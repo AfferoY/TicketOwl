@@ -86,7 +86,7 @@ const EmailLoginScreen = ({
     if (isLoggedIn) {
       navigation.navigate("MainTab", {
         screen: "ScheduleStack",
-        params: "ScheduleMain",
+        params: { screen: "ScheduleMain" },
       });
     }
   }, [isLoggedIn]);

@@ -32,9 +32,11 @@ export async function client<T = any>(
 
   try {
     console.log(SERVER_URL + endpoint);
+    console.log(config);
 
     const response = await fetch(SERVER_URL + endpoint, config);
 
+    console.log(`Status Code: ${response.status}`);
     const data = await response.json();
     // console.log(SERVER_URL + endpoint);
 

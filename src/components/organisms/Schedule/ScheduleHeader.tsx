@@ -1,9 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { lightTheme } from "../../../constants/colors";
 import { spacing } from "../../../constants/spacing";
+import { ScheduleStackParamList } from "../../../navigators/ScheduleStack";
 import responsiveSize from "../../../utils/responsiveSize";
 import Icons from "../../atoms/Icons";
 import MainPageHeader from "../../molecules/MainPageHeader";
@@ -19,7 +20,7 @@ const NotiBadge = styled.View`
 `;
 
 const ScheduleHeader = ({ title }: { title: string }) => {
-  const navigation = useNavigation() as any;
+  const navigation = useNavigation() as NavigationProp<ScheduleStackParamList>;
   return (
     <MainPageHeader
       title={title}

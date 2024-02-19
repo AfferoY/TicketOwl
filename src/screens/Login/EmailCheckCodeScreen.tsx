@@ -45,7 +45,7 @@ const EmailCheckCodeScreen = ({
   route,
   navigation,
 }: EmailCheckCodeScreenProps) => {
-  const { email, type, codeId } = route.params; // type: findPw, register
+  const { email, type, code: codeId } = route.params; // type: findPw, register
 
   const [code, setCode] = useState<string[]>(new Array(6).fill(""));
   const inputRefs = Array(6)
