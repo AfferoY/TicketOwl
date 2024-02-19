@@ -22,20 +22,12 @@ const EmailSendScreen = ({
     // send email
 
     try {
-      // const res = await client.post("/api/members/signup-code", {
-      //   email: email,
-      // });
-
-      const res = await fetch(`${SERVER_URL}/api/members/signup-code`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email }),
+      console.log(`${SERVER_URL}/api/members/signup-code`);
+      const res = await client.post("/api/members/signup-code", {
+        email: email,
       });
-      console.log(res.json());
-
-      // const { success, code, result } = res;
+      console.log(res);
+      const { success, code, result } = res;
 
       // if (success) {
       //   console.log(res);
