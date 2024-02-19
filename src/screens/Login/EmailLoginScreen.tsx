@@ -15,6 +15,7 @@ import { client } from "../../utils/api";
 import getDeviceId from "../../utils/getDeviceId";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LoginStackParamList } from "../../navigators/LoginStack";
+import { getAPIHost } from "../../utils/getAPIHost";
 
 const SubBtn = ({ text, onPress }: { text: string; onPress: () => void }) => {
   return (
@@ -51,31 +52,33 @@ const EmailLoginScreen = ({
 
   const handleLogin = async () => {
     const deviceId = await getDeviceId();
+
     try {
-      const res = await client.post("", {
+      const res = await client.post("/api/members/login", {
         email: user.email,
         password: user.password,
         deviceId: deviceId,
       });
-      const {
-        result,
-        message,
-        accessToken,
-        refreshToken,
-        accessExp,
-        refreshExp,
-      } = res;
-      if (result === "success") {
-        dispatch(
-          setLoggedIn({
-            accessToken,
-            refreshToken,
-            accessExp,
-            refreshExp,
-            deviceId,
-          })
-        );
-      }
+      console.log(res);
+      // const {
+      //   result,
+      //   message,
+      //   accessToken,
+      //   refreshToken,
+      //   accessExp,
+      //   refreshExp,
+      // } = res;
+      // if (result === "success") {
+      //   dispatch(
+      //     setLoggedIn({
+      //       accessToken,
+      //       refreshToken,
+      //       accessExp,
+      //       refreshExp,
+      //       deviceId,
+      //     })
+      //   );
+      // }
     } catch (e: any) {
       console.log("emailLogin error: ", e.message);
     }

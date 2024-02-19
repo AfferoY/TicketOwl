@@ -18,6 +18,8 @@ export const palette = {
   brown100: "#958185",
   brown200: "#2A030A",
 
+  blue: "#26A2BA",
+
   // brand colors
   interpark: "#8E43E7",
   melon: "#04E532",
@@ -47,6 +49,7 @@ export const lightTheme = {
   pointPink: palette.pink400,
   subPink: palette.pink200,
   red: palette.pink500,
+  blue: palette.blue,
 
   inactiveTint: palette.gray600,
 };

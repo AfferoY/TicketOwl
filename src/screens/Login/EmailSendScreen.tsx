@@ -7,6 +7,7 @@ import { spacing } from "../../constants/spacing";
 import { client } from "../../utils/api";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LoginStackParamList } from "../../navigators/LoginStack";
+import { getAPIHost } from "../../utils/getAPIHost";
 
 const EmailSendScreen = ({
   navigation,
@@ -15,31 +16,31 @@ const EmailSendScreen = ({
   const [emailAlert, setEmailAlert] = useState("");
   const [ready, setReady] = useState(false);
 
+  const SERVER_URL = getAPIHost();
   const sendMail = async () => {
     setReady(false);
     // send email
 
     try {
+      console.log(`${SERVER_URL}/api/members/signup-code`);
       const res = await client.post("/api/members/signup-code", {
         email: email,
       });
-
-      // status code 출력
-
+      console.log(res);
       const { success, code, result } = res;
 
-      if (success) {
-        console.log(res);
-        // navigation.navigate("EmailCheckCode", {
-        //   email,
-        //   code,
-        //   type: "register",
-        // });
-      } else if (!success) {
-        setEmailAlert("이미 가입된 이메일입니다.");
-      } else {
-        setEmailAlert("이메일 전송에 실패했습니다.");
-      }
+      // if (success) {
+      //   console.log(res);
+      //   // navigation.navigate("EmailCheckCode", {
+      //   //   email,
+      //   //   code,
+      //   //   type: "register",
+      //   // });
+      // } else if (!success) {
+      //   setEmailAlert("이미 가입된 이메일입니다.");
+      // } else {
+      //   setEmailAlert("이메일 전송에 실패했습니다.");
+      // }
     } catch (error) {
       console.error("[client] 이메일 전송 오류 발생:", error);
       setEmailAlert("이메일 전송 중 오류가 발생했습니다.");
